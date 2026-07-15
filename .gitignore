@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+google_apps_script.js
+
 
 # Local Environment Secrets (CRITICAL: Prevents leaks)
 .env

@@ -50,6 +50,47 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // 0. Google Apps Script Web App Delegation (Bypasses Render SMTP port blocking)
+    if (process.env.APPS_SCRIPT_URL) {
+      console.log('Delegating sheets insertion and email dispatch to Google Apps Script...');
+      const response = await fetch(process.env.APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          studentName,
+          surname,
+          mobileNumber,
+          emailId,
+          dob,
+          aadharNumber,
+          fatherName,
+          classJoining,
+          fatherOccupation,
+          address
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        return res.status(200).json({
+          success: true,
+          admissionNumber: result.admissionNumber,
+          message: 'Admission request submitted successfully.'
+        });
+      } else {
+        if (result.error === 'duplicate_aadhar') {
+          return res.status(409).json({
+            success: false,
+            error: 'duplicate_aadhar',
+            message: 'This Aadhar number is already registered in the database. Please check your details properly.'
+          });
+        }
+        throw new Error(result.error || 'Apps Script returned success=false');
+      }
+    }
+
     // 1. Google Sheets Integration & Duplicate Verification
     const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY || '';
     const privateKey = rawPrivateKey
