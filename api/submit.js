@@ -146,6 +146,9 @@ module.exports = async (req, res) => {
       // Connects over HTTPS on port 443 (Never blocked by Render firewall)
       try {
         console.log('Delegating email dispatch to Google Apps Script Web App...');
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000); // 6-second timeout limit
+
         const scriptResponse = await fetch(scriptUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -165,14 +168,17 @@ module.exports = async (req, res) => {
             schoolEmail: process.env.SCHOOL_EMAIL,
             sheetLink: sheetLink,
             logoUrl: process.env.LOGO_URL || ''
-          })
+          }),
+          signal: controller.signal
         });
 
+        clearTimeout(timeoutId);
         const scriptResult = await scriptResponse.json();
         console.log('Google Apps Script delegation response:', scriptResult);
       } catch (err) {
         console.error('Error delegating email to Google Apps Script:', err);
       }
+
     } else {
       // PATH B: Standard SMTP Fallback (Nodemailer service: 'gmail')
       // NOTE: Render blocks outbound SMTP ports, so this path is meant for local dev testing
@@ -182,8 +188,12 @@ module.exports = async (req, res) => {
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
-        }
+        },
+        connectionTimeout: 4000, // 4-second limit to establish connection
+        greetingTimeout: 4000,   // 4-second limit to receive greeting
+        socketTimeout: 6000      // 6-second socket inactivity limit
       });
+
 
       // Resolve Logo path or public image url config to avoid spam-triggering attachments
       const logoUrl = process.env.LOGO_URL;
