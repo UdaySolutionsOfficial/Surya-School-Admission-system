@@ -1,17 +1,27 @@
-# Dependency directory
+# Dependencies
 node_modules/
 
-# Local configuration secrets
+# Local Environment Secrets (CRITICAL: Prevents leaks)
 .env
-
-# Service Account credential keys
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.json
 !package.json
-!package-lock.json
-!public/manifest.json
 !manifest.json
 
-# Logs and environment runtimes
+
+# Serverless & Build outputs
+.vercel
+dist/
+build/
+
+# Logs
 *.log
-.system_generated/
+npm-debug.log*
+
+# Operating System Files
 .DS_Store
+Thumbs.db
+desktop.ini
