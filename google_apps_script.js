@@ -74,6 +74,7 @@ function sendAdmissionEmailsOnRowChange(e) {
     <div style="background-color: #FAFBFD; padding: 30px 15px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
       <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 2px solid #D4AF37; border-radius: 12px; box-shadow: 0 10px 30px rgba(11, 37, 64, 0.05); overflow: hidden;">
         <div style="background: linear-gradient(135deg, #0B2540 0%, #0F4C81 100%); padding: 30px 20px; text-align: center; border-bottom: 3px solid #D4AF37;">
+          <img src="https://lh3.googleusercontent.com/d/1SKzgWpcne1ot126tq-sR3T9Wk07nqZV3" style="width: 80px; height: 80px; margin-bottom: 12px; border-radius: 50%; object-fit: cover;" alt="SURYA Logo" />
           <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 24px; letter-spacing: 0.5px;">SURYA E.M High School</h2>
           <span style="color: #D4AF37; font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 5px;">New Admission Registration</span>
         </div>
@@ -155,6 +156,7 @@ function sendAdmissionEmailsOnRowChange(e) {
       <div style="background-color: #FAFBFD; padding: 30px 15px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
         <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 2px solid #D4AF37; border-radius: 12px; box-shadow: 0 10px 30px rgba(11, 37, 64, 0.05); overflow: hidden;">
           <div style="background: linear-gradient(135deg, #0B2540 0%, #0F4C81 100%); padding: 35px 20px; text-align: center; border-bottom: 3px solid #D4AF37;">
+            <img src="https://lh3.googleusercontent.com/d/1SKzgWpcne1ot126tq-sR3T9Wk07nqZV3" style="width: 80px; height: 80px; margin-bottom: 12px; border-radius: 50%; object-fit: cover;" alt="SURYA Logo" />
             <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.5px;">SURYA E.M High School</h2>
             <span style="color: #D4AF37; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 6px;">Building Bright Futures</span>
           </div>
