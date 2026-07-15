@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Admission Portal | SURYA E.M High School</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Official Premium Online Admission Portal for SURYA E.M High School, NANDIGAMPADU, UNAGATLA. Build a bright future for your child.">
+  <meta name="theme-color" content="#0B2540">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Particle Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- STAGE 1: Premium V2 Luxury Loader -->
+  <div id="portal-loader" class="loader-overlay">
+    <div class="loader-bg-glows"></div>
+    <div class="loader-content">
+      <div class="loader-logo-container">
+        <img src="assets/logo.png" alt="SURYA School Logo" class="loader-logo-v2">
+        <div class="logo-gold-glow"></div>
+      </div>
+      <div class="loader-welcome-text">
+        <span class="l-welcome">Welcome to</span>
+        <h2 class="l-school">SURYA E.M High School</h2>
+        <p class="l-tagline">Building Bright Futures</p>
+      </div>
+      <div class="loader-status">
+        <span class="loader-status-text">Securing Admission Portal Connection...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER (Revealed after Welcome Stage) -->
+  <div id="app-container" class="app-hidden">
+
+    <!-- STAGE 2: Welcome / Hero Header Section -->
+    <header class="welcome-header">
+      <div class="header-logo-wrapper">
+        <img src="assets/logo.png" alt="SURYA School Logo" class="header-logo">
+      </div>
+      <div class="welcome-text-group">
+        <span class="welcome-label">Welcome to</span>
+        <h1 class="school-name">SURYA E.M High School</h1>
+        <p class="tagline">Building Bright Futures</p>
+      </div>
+      <div class="location-badge">
+        <i class="fa-solid fa-location-dot"></i> NANDIGAMPADU, UNAGATLA
+      </div>
+    </header>
+
+    <!-- STAGE 3: Form Card Stage -->
+    <main class="form-section">
+      <div class="admission-card">
+        <div class="card-header">
+          <div class="header-accent"></div>
+          <h2>Student Admission Form</h2>
+          <p>Please enter correct details. All draft inputs are auto-saved locally.</p>
+        </div>
+
+        <!-- Skeleton Loaders -->
+        <div id="skeleton-loader" class="skeleton-container hidden">
+          <div class="skeleton-line skeleton-title"></div>
+          <div class="skeleton-grid">
+            <div class="skeleton-line skeleton-field"></div>
+            <div class="skeleton-line skeleton-field"></div>
+          </div>
+          <div class="skeleton-line skeleton-field-large"></div>
+          <div class="skeleton-line skeleton-button"></div>
+        </div>
+
+        <!-- The Admission Form -->
+        <form id="admission-form" novalidate>
+          <div class="form-grid">
+
+            <!-- Student Name -->
+            <div class="form-group staggered-reveal">
+              <label for="studentName">Student Name <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="studentName" name="studentName" required placeholder="Enter student name">
+              </div>
+              <span class="error-msg">Please enter student name</span>
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group staggered-reveal">
+              <label for="surname">Surname <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-signature input-icon"></i>
+                <input type="text" id="surname" name="surname" required placeholder="Enter family surname">
+              </div>
+              <span class="error-msg">Please enter surname</span>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="form-group staggered-reveal">
+              <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone input-icon"></i>
+                <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="10-digit mobile number"
+                  pattern="[0-9]{10}" inputmode="numeric">
+              </div>
+              <span class="error-msg">Please enter valid 10-digit mobile number</span>
+            </div>
+
+            <!-- Email ID -->
+            <div class="form-group staggered-reveal">
+              <label for="emailId">Email ID <span class="optional">(Optional)</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="emailId" name="emailId" placeholder="parent@example.com" inputmode="email">
+              </div>
+              <span class="error-msg">Please enter a valid email address</span>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group staggered-reveal">
+              <label for="dob">Date of Birth <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-calendar-days input-icon"></i>
+                <input type="date" id="dob" name="dob" required>
+              </div>
+              <span class="error-msg">Please choose date of birth</span>
+            </div>
+
+            <!-- Aadhar Number -->
+            <div class="form-group staggered-reveal">
+              <label for="aadharNumber">Aadhar Number <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-id-card input-icon"></i>
+                <input type="tel" id="aadharNumber" name="aadharNumber" required placeholder="12-digit Aadhar number" pattern="[0-9]{12}" inputmode="numeric" maxlength="12">
+              </div>
+              <span class="error-msg">Please enter a valid 12-digit Aadhar number</span>
+            </div>
+
+
+            <!-- Class Joining For -->
+            <div class="form-group staggered-reveal">
+              <label for="classJoining">Class Joining For <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-graduation-cap input-icon"></i>
+                <select id="classJoining" name="classJoining" required>
+                  <option value="" disabled selected>Select Class</option>
+                  <option value="LKG">LKG</option>
+                  <option value="UKG">UKG</option>
+                  <option value="1st Class">1st Class</option>
+                  <option value="2nd Class">2nd Class</option>
+                  <option value="3rd Class">3rd Class</option>
+                  <option value="4th Class">4th Class</option>
+                  <option value="5th Class">5th Class</option>
+                  <option value="6th Class">6th Class</option>
+                  <option value="7th Class">7th Class</option>
+                  <option value="8th Class">8th Class</option>
+                  <option value="9th Class">9th Class</option>
+                  <option value="10th Class">10th Class</option>
+                </select>
+              </div>
+              <span class="error-msg">Please select class</span>
+            </div>
+
+            <!-- Father Name -->
+            <div class="form-group staggered-reveal">
+              <label for="fatherName">Father's Name <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user-tie input-icon"></i>
+                <input type="text" id="fatherName" name="fatherName" required placeholder="Enter father's name">
+              </div>
+              <span class="error-msg">Please enter father name</span>
+            </div>
+
+            <!-- Father Occupation -->
+            <div class="form-group staggered-reveal">
+              <label for="fatherOccupation">Father's Occupation <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-briefcase input-icon"></i>
+                <input type="text" id="fatherOccupation" name="fatherOccupation" required
+                  placeholder="Father's profession">
+              </div>
+              <span class="error-msg">Please enter father's occupation</span>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group full-width staggered-reveal">
+              <label for="address">Residential Address <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-house-chimney input-icon" style="margin-top: 12px; align-self: flex-start;"></i>
+                <textarea id="address" name="address" required placeholder="Enter complete residential address"
+                  rows="3"></textarea>
+              </div>
+              <span class="error-msg">Please enter residential address</span>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-wrapper staggered-reveal">
+            <button type="submit" id="submit-btn" class="btn-primary-gradient">
+              <span class="btn-text">Submit Admission</span>
+              <span class="btn-shimmer"></span>
+              <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Processing...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- POST SUBMISSION: Premium Achievement Certificate Success Card -->
+    <div id="success-screen" class="success-overlay hidden">
+      <div class="sparkles-container"></div>
+      <div class="certificate-card">
+        <button id="cert-close-btn" class="cert-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="certificate-border-outer">
+          <div class="certificate-border-inner">
+
+            <div class="certificate-header">
+              <img src="assets/logo.png" alt="SURYA Emblem" class="cert-logo">
+              <h3 class="cert-subtitle">SURYA E.M HIGH SCHOOL</h3>
+              <span class="cert-location">NANDIGAMPADU, UNAGATLA</span>
+            </div>
+
+            <div class="certificate-body">
+              <div class="cert-badge-wrapper">
+                <div class="cert-gold-seal">
+                  <svg class="checkmark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                  </svg>
+                </div>
+              </div>
+
+              <h2 class="cert-title">Admission Status</h2>
+              <p class="cert-intro">This is to confirm that the online admission request for</p>
+              <h3 id="success-student-name" class="cert-student-name">Student Name</h3>
+              <p class="cert-text">has been successfully received for joining</p>
+              <h4 id="success-class-name" class="cert-class">Class Name</h4>
+
+              <div class="cert-ref-box">
+                <span class="cert-ref-label">ADMISSION REFERENCE NUMBER</span>
+                <span id="success-ref-num" class="cert-ref-value">SURYA-2026-00001</span>
+              </div>
+            </div>
+
+            <p class="cert-thankyou">Thank you for choosing SURYA E.M High School.</p>
+            <p id="success-email-notice" class="email-notice hidden">Confirmation sent to your email</p>
+
+          </div>
+        </div>
+        <button id="success-done-btn" class="btn-outline cert-done-btn">Register Another Student</button>
+      </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h3>SURYA E.M High School</h3>
+          <p class="footer-loc"><i class="fa-solid fa-location-dot"></i> NANDIGAMPADU, UNAGATLA</p>
+          <a href="tel:8813256157" class="footer-phone"><i class="fa-solid fa-phone"></i> Principal – 8813256157</a>
+        </div>
+
+        <!-- Embedded Google Map -->
+        <div class="footer-map">
+          <iframe
+            src="https://maps.google.com/maps?q=Surya%20EM%20School%20Nandigampadu%20Unagatla&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="150" style="border:0; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCdTvTXABG3LXvHghq6CpeTg" target="_blank" aria-label="YouTube"><i
+              class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2026 SURYA E.M High School. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- STAGE 4: Premium Educational Progress Submission Overlay -->
+  <div id="submission-loader" class="submission-loader-overlay hidden">
+    <div class="loader-progress-card">
+      <div class="loader-card-glow"></div>
+      
+      <!-- Circular Gold Badge holding the animated icon -->
+      <div class="loader-badge-circle">
+        <div class="loader-icon-wrapper">
+          <i id="loader-progress-icon" class="fa-solid fa-book-open"></i>
+        </div>
+      </div>
+      
+      <!-- Progress Bar Track -->
+      <div class="progress-track">
+        <div id="loader-progress-fill" class="progress-fill"></div>
+      </div>
+      
+      <!-- Progress Label -->
+      <div class="progress-percentage-label"><span id="loader-progress-percent">0</span>%</div>
+      
+      <!-- Educational Phases and Sub-texts -->
+      <h3 id="loader-phase-title" class="loader-phase-title">Securing Connection...</h3>
+      <p id="loader-phase-desc" class="loader-phase-desc">Building student database record</p>
+    </div>
+  </div>
+
+
+  <!-- FLOATING QUICK CONTACT BUTTONS -->
+  <div class="floating-actions">
+    <!-- Call Principal -->
+    <a href="tel:8813256157" class="floating-btn btn-call" aria-label="Call Principal">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <!-- WhatsApp Chat -->
+    <a href="https://wa.me/918813256157?text=Hello%20Surya%20School%20Admissions,%20I%20have%20an%20inquiry%20regarding%20school%20admissions."
+      target="_blank" class="floating-btn btn-whatsapp" aria-label="WhatsApp Chat">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- GSAP Animation Libraries via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Main Application Script -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

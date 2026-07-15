@@ -1,0 +1,17 @@
+# Dependency directory
+node_modules/
+
+# Local configuration secrets
+.env
+
+# Service Account credential keys
+*.json
+!package.json
+!package-lock.json
+!public/manifest.json
+!manifest.json
+
+# Logs and environment runtimes
+*.log
+.system_generated/
+.DS_Store
