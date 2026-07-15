@@ -97,9 +97,17 @@ window.addEventListener('DOMContentLoaded', () => {
   }, '-=1.0')
   // Step 3: Trigger full app reveal
   .to('.loader-status-text', {
-    text: 'Redirecting to secure portal...',
-    duration: 0.4
+    opacity: 0,
+    duration: 0.2,
+    onComplete: () => {
+      const el = document.querySelector('.loader-status-text');
+      if (el) el.textContent = 'Redirecting to secure portal...';
+    }
   }, '-=0.2')
+  .to('.loader-status-text', {
+    opacity: 1,
+    duration: 0.2
+  })
   .to({}, {
     duration: 0.2,
     onComplete: triggerAppReveal
