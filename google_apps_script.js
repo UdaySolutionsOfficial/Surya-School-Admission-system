@@ -143,7 +143,7 @@ function sendAdmissionEmailsOnRowChange(e) {
   `;
 
   // Send email to school admin
-  MailApp.sendEmail({
+  GmailApp.sendEmail({
     to: schoolEmail,
     subject: "[New Admission] " + studentName + " " + surname + " - Joining Class " + classJoining + " [" + admissionNumber + "]",
     htmlBody: schoolEmailHtml
@@ -190,7 +190,7 @@ function sendAdmissionEmailsOnRowChange(e) {
       </div>
     `;
 
-    MailApp.sendEmail({
+    GmailApp.sendEmail({
       to: emailId,
       subject: "Application Confirmation: SURYA E.M High School [" + admissionNumber + "]",
       htmlBody: parentEmailHtml
